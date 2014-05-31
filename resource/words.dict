@@ -1,0 +1,4 @@
+loop
+loop_get_posts
+loop_wp_query
+loop_query_posts

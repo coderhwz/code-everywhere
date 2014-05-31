@@ -1,0 +1,4 @@
+view/
+*.orig
+.netrwhist
+secret.vim
