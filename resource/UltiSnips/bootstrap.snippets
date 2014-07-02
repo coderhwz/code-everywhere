@@ -1,0 +1,29 @@
+snippet ctrlgrp "" b
+<div class="control-group">
+	<label for="${1:id}" class="control-label">${2:label}</label>
+	<div class="controls">
+		<input id="${3:$1}" type="${4:text}"  value="" name="${5:$1}" />
+		<span class="help">${4:help}</span>
+	</div>
+</div>
+endsnippet
+
+snippet bsmodal "bs modal" b
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">${1:title}</h4>
+            </div>
+            <div class="modal-body">
+				${2:content}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+endsnippet

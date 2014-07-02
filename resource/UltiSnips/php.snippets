@@ -1,4 +1,4 @@
-extends html
+extends html,sql,wordpress,bootstrap
 snippet ph "php inline tag" w
 <?php $1 ;?>
 endsnippet
@@ -26,64 +26,16 @@ snippet fehtml "foreach php html" b
 endsnippet
 
 
-snippet sql_insert
-	INSERT INTO ${1:tablename} SET ${2:colname} = '${3:colvalue}'; 
-endsnippet
 
-snippet sql_update 
-	UPDATE ${1:tablename} SET ${2:colname} = '${3:colvalue}' WHERE ${4:key} = '${5:value}'; 
-endsnippet
-
-snippet sql_delete
-	DELETE FROM ${1:tbl_name} WHERE ${2:key} = '${3:value}';
-endsnippet
-
-snippet sql_select
-	SELECT ${1:field} FROM ${2:tbl_name} WHERE ${3:key} = '${4:value}' LIMIT ${5:count};
-endsnippet
-
-snippet sql_left
-	SELECT ${1:field} FROM ${2:tbl_name} LEFT JOIN ${3:tbl_name} ON ${4:field} = ${5:field} WHERE ${6:key} = '${7:value}' LIMIT ${8:count};
-endsnippet
-
-snippet sql_right
-	SELECT ${1:field} FROM ${2:tbl_name} RIGHT JOIN ${3:tbl_name} ON ${4:field} = ${5:field} WHERE ${6:key} = '${7:value} LIMIT ${8:count}';
-endsnippet
-
-snippet loop
- <?php if (have_posts()) : ?>
-	   <?php while (have_posts()) : the_post(); ?>    
-	   ${1:// todo}
-	   <?php endwhile; ?>
- <?php endif; ?>
-endsnippet
-
-snippet loop_get_posts
-<?php global $post; 
-	$args = array(${1:'category' => -9}); // exclude category 9
-	$custom_posts = get_posts($args);
-	foreach($custom_posts as $post) : setup_postdata($post);?>
-	   ${2:// todo}
-<?php endforeach; ?>
-endsnippet
-
-snippet loop_wp_query
-<?php $result = new WP_Query(${1:cat=-9});
-	while($result->have_posts()) : $result->the_post(); ?>
-	   ${2:// todo}
-	<?php endwhile; ?>
-<?php wp_reset_postdata(); ?>
-endsnippet
-
-snippet loop_query_posts
-<?php global $query_string;
-	query_posts( $query_string.${1:$args} );?>
-	 <?php if (have_posts()) : ?>
-		   <?php while (have_posts()) : the_post(); ?>    
-		   ${2:// todo}
-		   <?php endwhile; ?>
-	 <?php endif; ?>
-<?php wp_reset_query(); ?>
+snippet doc_f "doc_f"
+/**
+ * $2
+ * @return ${4:void}
+ * @author ${5:`!v g:snips_author`}
+ **/
+${1:public }function ${2:someFunc}(${3}) {
+	${6}
+}
 endsnippet
 
 
