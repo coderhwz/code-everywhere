@@ -30,6 +30,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'slim-template/vim-slim'
+Plugin 'justinmk/vim-sneak'
+Plugin 'elzr/vim-json'
 
 filetype plugin indent on                 " required!
 
