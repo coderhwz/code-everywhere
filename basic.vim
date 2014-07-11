@@ -33,6 +33,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'elzr/vim-json'
 Plugin 'Glench/Vim-Jinja2-syntax'
+Plugin 'vim-scripts/nginx.vim'
 
 filetype plugin indent on                 " required!
 

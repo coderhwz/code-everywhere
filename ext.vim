@@ -145,3 +145,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/resource/UltiSnips/"
 "//可选目录
 let g:UltiSnipsSnippetDirectories=["UltiSnips","resource/UltiSnips"]
+
+" set wildignore+=env/*
+
+let g:ctrlp_custom_ignore = {
+            \ 'dir':'env',
+    \}
