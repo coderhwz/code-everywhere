@@ -34,6 +34,7 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'elzr/vim-json'
 Plugin 'Glench/Vim-Jinja2-syntax'
 Plugin 'vim-scripts/nginx.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on                 " required!
 
