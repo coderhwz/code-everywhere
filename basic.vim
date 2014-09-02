@@ -21,7 +21,7 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'vim-scripts/Tagbar.git'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'vim-scripts/taglist.vim.git'
-Plugin 'johnhamelink/blade.vim'
+Plugin 'xsbeats/vim-blade'
 Plugin 'eshion/vim-sftp-sync'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
@@ -35,6 +35,7 @@ Plugin 'elzr/vim-json'
 Plugin 'Glench/Vim-Jinja2-syntax'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'bonsaiben/bootstrap-snippets'
 
 filetype plugin indent on                 " required!
 

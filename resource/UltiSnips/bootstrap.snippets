@@ -1,4 +1,4 @@
-snippet ctrlgrp "" b
+snippet controlgroup "" b
 <div class="control-group">
 	<label for="${1:id}" class="control-label">${2:label}</label>
 	<div class="controls">
@@ -26,4 +26,47 @@ snippet bsmodal "bs modal" b
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+endsnippet
+
+snippet bswell "Description" b
+<div class="well">
+	${1:...}
+</div>
+endsnippet
+
+snippet table "表格" b
+<table class="table">
+	<thead>
+		<tr>
+			<th>${1}</th>
+			<th>${2}</th>
+			<th>${3}</th>
+			<th>${4}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2">1</td>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+		</tr>
+		<tr>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@TwBootstrap</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Jacob</td>
+			<td>Thornton</td>
+			<td>@fat</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td colspan="2">Larry the Bird</td>
+			<td>@twitter</td>
+		</tr>
+	</tbody>
+</table>
 endsnippet
