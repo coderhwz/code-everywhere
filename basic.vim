@@ -75,7 +75,8 @@ set undodir=$HOME/.vim/tmp/undofiles
 set colorcolumn=80
 set viewoptions=folds,cursor
 set foldminlines=10
-colorscheme jellybeans                    " 颜色模式
+colorscheme solarized                    " 颜色模式
+set background=light
 set backupdir=$HOME/.vim/tmp/swp_files
 set cursorline 
 
