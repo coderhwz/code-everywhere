@@ -16,6 +16,7 @@ nnoremap <leader>s :w<CR>
 " nnoremap <leader>fb :FufBuffer<CR>
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <S-F2> :NERDTreeMirror<CR>
 let g:NERDTreeBookmarksFile=expand('$HOME') . "/.vim/tmp/nerdtree/bookmark"
@@ -151,3 +152,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips","resource/UltiSnips"]
 let g:ctrlp_custom_ignore = {
             \ 'dir':'env',
     \}
+
+let g:delimitMate_expand_space=1
+let g:delimitMate_expand_cr=1
+" let g:airline_powerline_fonts = 1

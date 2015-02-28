@@ -28,7 +28,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'jnwhiteh/vim-golang'
+" Plugin 'jnwhiteh/vim-golang'
+Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'elzr/vim-json'
@@ -36,6 +37,7 @@ Plugin 'Glench/Vim-Jinja2-syntax'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bonsaiben/bootstrap-snippets'
+Plugin 'Raimondi/delimitMate'
 
 filetype plugin indent on                 " required!
 
