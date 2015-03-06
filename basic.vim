@@ -31,6 +31,7 @@ Plugin 'honza/vim-snippets'
 " Plugin 'jnwhiteh/vim-golang'
 Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'justinmk/vim-sneak'
 Plugin 'elzr/vim-json'
 Plugin 'Glench/Vim-Jinja2-syntax'
@@ -75,7 +76,7 @@ set undodir=$HOME/.vim/tmp/undofiles
 set colorcolumn=80
 set viewoptions=folds,cursor
 set foldminlines=10
-colorscheme solarized                    " 颜色模式
+colorscheme jellybeans                    " 颜色模式
 set background=light
 set backupdir=$HOME/.vim/tmp/swp_files
 set cursorline 
@@ -84,4 +85,15 @@ set cursorline
 so $HOME/.vim/ext.vim
 if(has("win32") || has("win64"))
 	so $HOME/.vim/windows.vim
+endif
+
+" if has("unix")
+  " let s:uname = system("uname -s")
+  " if s:uname == "Darwin"
+      " so $HOME/.vim/mac.vim
+  " endif
+" endif
+if has("gui_macvim")
+    so $HOME/.vim/mac.vim
+    set guifont=Monaco:h13
 endif
