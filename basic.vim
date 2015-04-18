@@ -81,6 +81,9 @@ set background=light
 set backupdir=$HOME/.vim/tmp/swp_files
 set cursorline 
 
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
 
 so $HOME/.vim/ext.vim
 if(has("win32") || has("win64"))
