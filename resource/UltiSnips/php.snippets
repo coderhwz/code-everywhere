@@ -61,6 +61,16 @@ ${2}
 <?php } ;?> 
 endsnippet
 
+snippet	debug "logger debug info" b
+Factory::logger()->debug('${1}',$${2:data})
+endsnippet
+
+snippet text "长文本" b
+$${1:var} = <<<TEXT
+${2:text}
+TEXT;
+endsnippet
+
 
 
 # vim:ft=snippets:
