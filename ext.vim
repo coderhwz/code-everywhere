@@ -138,7 +138,7 @@ let g:syntastic_javascript_checkers=['jshlint']
 " let g:syntastic_phpcs_conf='--standard=PEAR'
 " let g:syntastic_php_phpcs_args="--report=csv --standard=PSR2"
 source ~/.vim/secret.vim
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
@@ -156,3 +156,5 @@ let g:ctrlp_custom_ignore = {
 let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
 " let g:airline_powerline_fonts = 1
+"
+" let g:ycm_collect_identifiers_from_tags_files=1

@@ -39,6 +39,7 @@ Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bonsaiben/bootstrap-snippets'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Valloric/YouCompleteMe'
 
 filetype plugin indent on                 " required!
 
@@ -73,6 +74,7 @@ set autoindent
 set laststatus=2
 set directory=$HOME/.vim/tmp/swp_files    " 设置swp文件路径
 set undodir=$HOME/.vim/tmp/undofiles
+set viewdir=$HOME/.vim/tmp/views
 set colorcolumn=80
 set viewoptions=folds,cursor
 set foldminlines=10
@@ -100,3 +102,6 @@ if has("gui_macvim")
     so $HOME/.vim/mac.vim
     set guifont=Monaco:h13
 endif
+
+autocmd BufWinLeave .vimrc mkview
+autocmd BufWinEnter .vimrc silent loadview 
