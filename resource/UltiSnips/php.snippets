@@ -1,5 +1,5 @@
 extends html,sql,wordpress,bootstrap
-snippet ph "php inline tag" w
+snippet ph "php inline tag" i
 <?php $1 ;?>
 endsnippet
 
@@ -33,7 +33,8 @@ snippet doc_f "doc_f"
  * @return ${4:void}
  * @author ${5:`!v g:snips_author`}
  **/
-${1:public }function ${2:someFunc}(${3}) {
+${1:public }function ${2:someFunc}(${3})
+{
 	${6}
 }
 endsnippet
@@ -71,6 +72,17 @@ ${2:text}
 TEXT;
 endsnippet
 
+snippet js "js" i
+<?php echo assets_js("$1") ?>
+endsnippet
 
+snippet css "css" i
+<?php echo assets_css("$1") ?>
+endsnippet
+
+
+snippet image "image" i
+<?php echo assets_image("$1") ?>
+endsnippet
 
 # vim:ft=snippets:

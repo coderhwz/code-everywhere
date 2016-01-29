@@ -11,7 +11,7 @@ endif
 
 nnoremap <C-Right> :bn<CR>
 nnoremap <C-Left> :bp<CR>
-nnoremap <leader>s :w<CR>
+nnoremap <leader><space> :w<CR>
 " nnoremap <leader>ff :FufFile<CR>
 " nnoremap <leader>fb :FufBuffer<CR>
 nnoremap <leader>f :CtrlP<CR>
@@ -39,6 +39,7 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <F4> :Tabularize/=><CR>
 
 inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
 
@@ -57,30 +58,85 @@ let NERDChristmasTree       = 1
 let NERDTreeShowLineNumbers = 1
 let NERDTreeIgnore = ['\.pyc$']
 
-let php_folding=3
+" let php_folding=1
 let makeelementsuf = '\\\' " 把;;-->,,,
 
 
-"""""""""""""""""""""""""""Neocomplcache """""""""""""""""
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 0
-" let g:neocomplcache_enable_camel_case_completion = 1  "
-" 这个导致输入大写字母时卡起来
-" let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 2
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_ignore_case=0
-" let g:neocomplcache_keyword_patterns._='\h\w*'
-let g:neocomplcache_source_rank = {
-			\ 'snippets_complete' : 100,
-			\ }
-" " \ 'abbrev_complete' : 50,
-" autocmd InsertEnter * NeoComplCacheCachingBuffer
-" autocmd InsertLeave * NeoComplCacheCachingBuffer
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
-"""""""""""""""""""""""""""Neocomplcache end """""""""""""""""
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_auto_select = 1
+" let g:neocomplete#max_list = 30
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
 
 """""""""""""""""""""""""""Status Bar """""""""""""""""
 
@@ -138,9 +194,9 @@ let g:syntastic_javascript_checkers=['jshlint']
 " let g:syntastic_phpcs_conf='--standard=PEAR'
 " let g:syntastic_php_phpcs_args="--report=csv --standard=PSR2"
 source ~/.vim/secret.vim
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsEditSplit="vertical"
 "编辑目录
 let g:UltiSnipsSnippetsDir="~/.vim/resource/UltiSnips/"
@@ -150,7 +206,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips","resource/UltiSnips"]
 " set wildignore+=env/*
 
 let g:ctrlp_custom_ignore = {
-            \ 'dir':'env',
+            \ 'dir':'(env|vendor|node_modules)',
     \}
 
 let g:delimitMate_expand_space=1
@@ -158,3 +214,33 @@ let g:delimitMate_expand_cr=1
 " let g:airline_powerline_fonts = 1
 "
 " let g:ycm_collect_identifiers_from_tags_files=1
+" function! ToggleInputMethod()
+    " let s:result = system("~/.vim/bin/xkbswitch -gn")
+
+    " if s:result == "3"
+        " let s:x = system("~/.vim/bin/xkbswitch -sn 0")
+    " endif
+" endfunction
+
+" autocmd InsertLeave * :call ToggleInputMethod()
+
+let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
+function! ToggleInputMethod(method)
+    if a:method == 'com.apple.keylayout.US'
+        let s:result = libcall(g:switchLib , 'Xkb_Switch_setXkbLayout', a:method)
+    endif
+    let s:char = matchstr(getline("."), '\%' . col('.') . 'c.')
+    if s:char=~#"[\u4e00-\u9fa5]"
+        let s:result = libcall(g:switchLib , 'Xkb_Switch_setXkbLayout', a:method)
+    endif
+
+endfunction
+
+
+
+autocmd InsertLeave * call ToggleInputMethod('com.apple.keylayout.US')
+autocmd InsertEnter * call ToggleInputMethod('com.baidu.inputmethod.BaiduIM.wubi')
+
+
+
+nmap <leader>tt :TagbarToggle<CR>

@@ -7,7 +7,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-Plugin 'Shougo/neocomplcache.git'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'godlygeek/tabular.git'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'scrooloose/nerdtree.git'
@@ -21,6 +21,8 @@ Plugin 'tpope/vim-surround.git'
 Plugin 'vim-scripts/Tagbar.git'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'vim-scripts/taglist.vim.git'
+" Plugin 'vim-scripts/php.vim'
+Plugin 'shawncplus/php.vim'
 Plugin 'xsbeats/vim-blade'
 Plugin 'eshion/vim-sftp-sync'
 Plugin 'bling/vim-airline'
@@ -39,7 +41,15 @@ Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bonsaiben/bootstrap-snippets'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'rking/ag.vim'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'easymotion/vim-easymotion'
+" Plugin 'lyokha/vim-xkbswitch'
+" Plugin 'vimim/vimim'
+" Plugin 'spf13/PIV'
+" Plugin 'Valloric/YouCompleteMe'
 
 filetype plugin indent on                 " required!
 
@@ -77,6 +87,7 @@ set undodir=$HOME/.vim/tmp/undofiles
 set viewdir=$HOME/.vim/tmp/views
 set colorcolumn=80
 set viewoptions=folds,cursor
+set foldmethod=syntax
 set foldminlines=10
 colorscheme jellybeans                    " 颜色模式
 set background=light
