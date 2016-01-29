@@ -1,4 +1,14 @@
-"窗体设置
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldminlines=2 foldlevel=0 foldmethod=marker nospell:
+
+
+" 全局变量设置{
+
+let g:ctags_bin = "/usr/local/bin/ctags"
+let g:author = "coderhwz"
+
+"}
+
+"UI 设置{
 if has("gui_running")
 	set lines=50
 	set columns=200
@@ -8,32 +18,34 @@ if has("gui_running")
 	set guioptions-=r     " 显示右侧滚动条
 	winpos 260 171
 endif
+" }
 
+" UI 操作设置 {
 nnoremap <C-Right> :bn<CR>
 nnoremap <C-Left> :bp<CR>
 nnoremap <leader><space> :w<CR>
-" nnoremap <leader>ff :FufFile<CR>
-" nnoremap <leader>fb :FufBuffer<CR>
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>m :CtrlPMRU<CR>
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <S-F2> :NERDTreeMirror<CR>
-let g:NERDTreeBookmarksFile=expand('$HOME') . "/.vim/tmp/nerdtree/bookmark"
-
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-h> <C-w>h
-map <C-l> <C-W>l
 " 快捷键
 nmap <Up> <c-w>k
 nmap <Down> <c-w>j
 nmap <Right> <c-w>l
 nmap <Left> <c-w>h
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap { {}<LEFT>
-inoremap < <><LEFT>
+" }
+
+"CtrlP 设置{
+
+let g:ctrlp_cache_dir="$HOME/.vim/tmp/ctrlp"
+let g:ctrlp_custom_ignore = {
+            \ 'dir':'(env|vendor|node_modules)',
+    \}
+
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>m :CtrlPMRU<CR>
+
+"}
+
+
+" Tabularize 设置 { 
 
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
@@ -41,11 +53,12 @@ nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <F4> :Tabularize/=><CR>
 
-inoremap  <c-]> <c-x><c-]> "ctags 补全快捷键
+" }
 
-let snips_author='hwz'                                                             " 代码片段的作者
 
-"""""""""""""""""""""""""""NERDTree""""""""""""""""""""""
+
+" NERDTree 设置 {
+"
 let NERDTreeShowBookmarks   = 0
 let NERDTreeWinPos          = "left"
 let NERDTreeHijackNetrw     = 1
@@ -57,17 +70,27 @@ let NERDTreeMinimalUI       = 0
 let NERDChristmasTree       = 1
 let NERDTreeShowLineNumbers = 1
 let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeBookmarksFile=expand('$HOME') . "/.vim/tmp/nerdtree/bookmark"
+
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <S-F2> :NERDTreeMirror<CR>
+
+autocmd FileType nerdtree noremap <buffer> <C-Right> <nop>
+autocmd FileType nerdtree noremap <buffer> <C-Left> <nop>
+
+" autocmd FileType nerdtree noremap <buffer> <leader>f <nop>
+" autocmd FileType nerdtree noremap <buffer> <leader>bu <nop>
 
 " let php_folding=1
 let makeelementsuf = '\\\' " 把;;-->,,,
+" }
 
-
-
+" NeoComplete 设置{
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 0
 " let g:neocomplete#max_list = 30
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -131,69 +154,51 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'"{"}
 
 " For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
+" https://github.com/c9s/perlomni.vim"{"}
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" }
 
+" NERD_commenter设置{
 
-"""""""""""""""""""""""""""Status Bar """""""""""""""""
-
-let g:fuf_dataDir="$HOME/.vim/tmp/fuf-data"
-let g:ctrlp_cache_dir="$HOME/.vim/tmp/ctrlp"
-let g:snippets_dir="$HOME/.vim/resource/snippets_hwz/" "代码片段的
-let g:neocomplcache_temporary_dir="$HOME/.vim/tmp/neocomplcache"
-
-""""""""""""""""""""""""""NERD_commenter """"""""""""""""
 let NERDMenuMode=0
 let NERDSpaceDelims=1
-""""""""""""""""""""""""""NERD_commenter END """"""""""""""""
-" let g:loaded_syntastic_plugin=0
+
+" }
+
+" 字典设置{
+
+autocmd FileType php setlocal dict+=$HOME/.vim/resource/php.dict
+" autocmd FileType php setlocal dict+=$HOME/.vim/resource/wp.dict
+autocmd FileType c setlocal dict+=$HOME/.vim/resource/gtk.c.dict
+
+"}
 
 
-autocmd FileType nerdtree noremap <buffer> <C-Right> <nop>
-autocmd FileType nerdtree noremap <buffer> <C-Left> <nop>
-" autocmd FileType nerdtree noremap <buffer> <leader>f <nop>
-" autocmd FileType nerdtree noremap <buffer> <leader>bu <nop>
 autocmd BufNewFile,Bufread *.ros,*.inc,*.php set keywordprg="help"
+
+" Session 保存 {
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
-autocmd FileType php setlocal dict+=$HOME/.vim/resource/php.dict
-autocmd FileType php setlocal dict+=$HOME/.vim/resource/wp.dict
-autocmd FileType c setlocal dict+=$HOME/.vim/resource/gtk.c.dict
+"}
+
 autocmd BufRead,BufNewFile *.js set ft=javascript syntax=jquery
 
-" if has('unix')
-" let g:ctrlp_user_command =
-    " \ 'find %s -type f | grep -v -P "\.png$|\.jpg|\.gif|\.bmp|\.so|tags|/tmp/|/\.hg/|/\.git/"'          " MacOSX/Linux
-" endif
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+" syntatic 设置{
 
-nnoremap <C-n> :call NumberToggle()<cr>
-nnoremap <silent> <F3> :TlistToggle<CR>
-let g:Tlist_Exit_OnlyWindow=1
-let g:Tlist_WinWidth=30
-let g:Tlist_Use_Right_Window=1
-let g:Tlist_Show_One_File=1
-let g:TlistEnable_Fold_Column=0
-let tlist_php_settings = 'php;c:class;f:function;d:constant'
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-
-" syntatic
 let makeprg ="/usr/local/php/bin/php -l %"
 let g:syntastic_php_checkers=['php',  'phpmd']
 let g:syntastic_javascript_checkers=['jshlint']
-" let g:syntastic_phpcs_conf='--standard=PEAR'
-" let g:syntastic_php_phpcs_args="--report=csv --standard=PSR2"
+
+" }
 source ~/.vim/secret.vim
+
+
+"UltiSnips 设置 {
+
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
@@ -202,28 +207,15 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/resource/UltiSnips/"
 "//可选目录
 let g:UltiSnipsSnippetDirectories=["UltiSnips","resource/UltiSnips"]
+let g:snippets_dir="$HOME/.vim/resource/snippets_hwz/" "代码片段的
+let snips_author=g:ctags_bin
 
-" set wildignore+=env/*
-
-let g:ctrlp_custom_ignore = {
-            \ 'dir':'(env|vendor|node_modules)',
-    \}
+" }
 
 let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
-" let g:airline_powerline_fonts = 1
-"
-" let g:ycm_collect_identifiers_from_tags_files=1
-" function! ToggleInputMethod()
-    " let s:result = system("~/.vim/bin/xkbswitch -gn")
 
-    " if s:result == "3"
-        " let s:x = system("~/.vim/bin/xkbswitch -sn 0")
-    " endif
-" endfunction
-
-" autocmd InsertLeave * :call ToggleInputMethod()
-
+" 输入法切换 {
 let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
 function! ToggleInputMethod(method)
     if a:method == 'com.apple.keylayout.US'
@@ -235,12 +227,52 @@ function! ToggleInputMethod(method)
     endif
 
 endfunction
-
-
-
 autocmd InsertLeave * call ToggleInputMethod('com.apple.keylayout.US')
 autocmd InsertEnter * call ToggleInputMethod('com.baidu.inputmethod.BaiduIM.wubi')
+" }
 
+" TagBar 设置 {
 
-
+let g:tagbar_show_visibility = 1
+let g:tagbar_type_php = {
+    \ 'ctagsbin'  : g:ctags_bin,
+    \ 'ctagsargs' : '--memory="512m" -f -',
+    \ 'kinds'     : [
+        \ 'd:Constants:0:0',
+        \ 'v:Variables:0:0',
+        \ 'f:Functions:1',
+        \ 'i:Interfaces:0',
+        \ 'c:Classes:0',
+        \ 'p:Properties:0:0',
+        \ 'm:Methods:1',
+        \ 'n:Namespaces:0',
+        \ 't:Traits:0',
+    \ ],
+    \ 'sro'        : '::',
+    \ 'kind2scope' : {
+        \ 'c' : 'class',
+        \ 'm' : 'method',
+        \ 'f' : 'function',
+        \ 'i' : 'interface',
+        \ 'n' : 'namespace',
+        \ 't' : 'trait',
+    \ },
+    \ 'scope2kind' : {
+        \ 'class'     : 'c',
+        \ 'method'    : 'm',
+        \ 'function'  : 'f',
+        \ 'interface' : 'i',
+        \ 'namespace' : 'n',
+        \ 'trait'     : 't',
+    \ }
+    \ }
 nmap <leader>tt :TagbarToggle<CR>
+" }
+
+
+
+" inoremap ( ()<LEFT>
+" inoremap [ []<LEFT>
+" inoremap { {}<LEFT>
+" inoremap < <><LEFT>
+
