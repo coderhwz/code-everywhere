@@ -212,9 +212,6 @@ let snips_author=g:ctags_bin
 
 " }
 
-let g:delimitMate_expand_space=1
-let g:delimitMate_expand_cr=1
-
 " 输入法切换 {
 let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
 function! ToggleInputMethod(method)
@@ -233,9 +230,10 @@ autocmd InsertEnter * call ToggleInputMethod('com.baidu.inputmethod.BaiduIM.wubi
 
 " TagBar 设置 {
 
+let g:tagbar_php_ctags_bin = "$HOME/.vim/bin/phpctags"
 let g:tagbar_show_visibility = 1
 let g:tagbar_type_php = {
-    \ 'ctagsbin'  : g:ctags_bin,
+    \ 'ctagsbin'  : g:tagbar_php_ctags_bin,
     \ 'ctagsargs' : '--memory="512m" -f -',
     \ 'kinds'     : [
         \ 'd:Constants:0:0',
@@ -269,10 +267,19 @@ let g:tagbar_type_php = {
 nmap <leader>tt :TagbarToggle<CR>
 " }
 
+" ag.vim {
+let g:ag_working_path_mode="r"
+"}
 
+"PHP.vim {
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
 
-" inoremap ( ()<LEFT>
-" inoremap [ []<LEFT>
-" inoremap { {}<LEFT>
-" inoremap < <><LEFT>
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+"}
 

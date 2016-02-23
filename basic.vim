@@ -16,13 +16,11 @@ Plugin 'vim-scripts/L9.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'vim-scripts/LargeFile.git'
 Plugin 'nono/jquery.vim.git'
-" Plugin 'msanders/snipmate.vim.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'vim-scripts/Tagbar.git'
 Plugin 'vim-scripts/matchit.zip.git'
-Plugin 'vim-scripts/taglist.vim.git'
-" Plugin 'vim-scripts/php.vim'
-Plugin 'shawncplus/php.vim'
+" Plugin 'vim-scripts/taglist.vim.git'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'xsbeats/vim-blade'
 Plugin 'eshion/vim-sftp-sync'
 Plugin 'bling/vim-airline'
@@ -30,7 +28,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-" Plugin 'jnwhiteh/vim-golang'
 Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-fugitive'
@@ -40,17 +37,18 @@ Plugin 'Glench/Vim-Jinja2-syntax'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bonsaiben/bootstrap-snippets'
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
+" 相对行号
 Plugin 'myusuf3/numbers.vim'
+" 累似CtrlP
 Plugin 'Shougo/unite.vim'
+" Markdown 插件
 Plugin 'plasticboy/vim-markdown'
+" 快速移动
 Plugin 'easymotion/vim-easymotion'
-" Plugin 'lyokha/vim-xkbswitch'
-" Plugin 'vimim/vimim'
-" Plugin 'spf13/PIV'
-" Plugin 'Valloric/YouCompleteMe'
-
+" 自动配对
+Plugin 'jiangmiao/auto-pairs'
 filetype plugin indent on                 " required!
 
 let mapleader=","
