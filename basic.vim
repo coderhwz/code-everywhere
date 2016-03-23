@@ -23,7 +23,8 @@ Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'xsbeats/vim-blade'
 Plugin 'eshion/vim-sftp-sync'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
@@ -39,6 +40,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bonsaiben/bootstrap-snippets'
 " Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
+Plugin 'terryma/vim-multiple-cursors'
 " 相对行号
 Plugin 'myusuf3/numbers.vim'
 " 累似CtrlP
@@ -109,7 +112,7 @@ endif
 " endif
 if has("gui_macvim")
     so $HOME/.vim/mac.vim
-    set guifont=Monaco:h13
+    set guifont=Monaco\ For\ Powerline:h13
 endif
 
 autocmd BufWinLeave .vimrc mkview

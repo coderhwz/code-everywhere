@@ -94,7 +94,7 @@ let g:neocomplete#enable_auto_select = 0
 " let g:neocomplete#max_list = 30
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_smart_case = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -170,9 +170,9 @@ let NERDSpaceDelims=1
 
 " 字典设置{
 
-autocmd FileType php setlocal dict+=$HOME/.vim/resource/php.dict
+" autocmd FileType php setlocal dict+=$HOME/.vim/resource/php.dict
 " autocmd FileType php setlocal dict+=$HOME/.vim/resource/wp.dict
-autocmd FileType c setlocal dict+=$HOME/.vim/resource/gtk.c.dict
+" autocmd FileType c setlocal dict+=$HOME/.vim/resource/gtk.c.dict
 
 "}
 
@@ -208,7 +208,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/resource/UltiSnips/"
 "//可选目录
 let g:UltiSnipsSnippetDirectories=["UltiSnips","resource/UltiSnips"]
 let g:snippets_dir="$HOME/.vim/resource/snippets_hwz/" "代码片段的
-let snips_author=g:ctags_bin
+let snips_author=g:author
 
 " }
 
@@ -282,4 +282,25 @@ augroup phpSyntaxOverride
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
 "}
+
+"Air Line{
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_tabs = 1
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+"}
+
 
