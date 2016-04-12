@@ -35,8 +35,11 @@ nmap <Left> <c-w>h
 
 let g:ctrlp_cache_dir="$HOME/.vim/tmp/ctrlp"
 let g:ctrlp_custom_ignore = {
-            \ 'dir':'(env|vendor|node_modules)',
+            \ 'dir':'(env\|vendor\|node_modules\|storage)',
     \}
+let g:ctrlp_by_filename = 1
+let g:ctrlp_regex = 1
+let g:ctrlp_show_hidden = 1
 
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
@@ -194,7 +197,9 @@ let g:syntastic_php_checkers=['php',  'phpmd']
 let g:syntastic_javascript_checkers=['jshlint']
 
 " }
-source ~/.vim/secret.vim
+if filereadable(exparnd("~/.vim/secret.vim"))
+    source ~/.vim/secret.vim
+endif
 
 
 "UltiSnips 设置 {
