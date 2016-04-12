@@ -217,6 +217,8 @@ let snips_author=g:author
 
 " }
 
+
+if OSX()
 " 输入法切换 {
 let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
 function! ToggleInputMethod(method)
@@ -232,6 +234,9 @@ endfunction
 autocmd InsertLeave * call ToggleInputMethod('com.apple.keylayout.US')
 autocmd InsertEnter * call ToggleInputMethod('com.baidu.inputmethod.BaiduIM.wubi')
 " }
+endif
+
+
 
 " TagBar 设置 {
 

@@ -1,8 +1,19 @@
+" Identify platform {
+    silent function! OSX()
+        return has('macunix')
+    endfunction
+    silent function! LINUX()
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+        return  (has('win32') || has('win64'))
+    endfunction
+" }:
 set nocompatible                          " 与vi不兼容
 filetype off                              " required!
 set rtp+=$HOME/.vim/
 set rtp+=$HOME/.vim/resource/php-manual/
-set rtp+=$HOME/.vim/bundle/Vundle.vim/
+set rtp+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
@@ -14,7 +25,7 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'vim-scripts/L9.git'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'vim-scripts/LargeFile.git'
+" Plugin 'vim-scripts/LargeFile.git'
 Plugin 'nono/jquery.vim.git'
 Plugin 'tpope/vim-surround.git'
 Plugin 'vim-scripts/Tagbar.git'
@@ -30,14 +41,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
-Plugin 'slim-template/vim-slim'
+" Plugin 'slim-template/vim-slim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'justinmk/vim-sneak'
 Plugin 'elzr/vim-json'
-Plugin 'Glench/Vim-Jinja2-syntax'
+" Plugin 'Glench/Vim-Jinja2-syntax'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bonsaiben/bootstrap-snippets'
+" Plugin 'bonsaiben/bootstrap-snippets'
 " Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'Chun-Yang/vim-action-ag'
@@ -52,6 +63,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'easymotion/vim-easymotion'
 " 自动配对
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'Konfekt/FastFold'
 filetype plugin indent on                 " required!
 
 let mapleader=","
