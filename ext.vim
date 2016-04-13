@@ -220,7 +220,7 @@ let snips_author=g:author
 
 if OSX()
 " 输入法切换 {
-let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
+let g:switchLib = expand("~/.vim/bin/libInputSourceSwitcher.dylib")
 function! ToggleInputMethod(method)
     if a:method == 'com.apple.keylayout.US'
         let s:result = libcall(g:switchLib , 'Xkb_Switch_setXkbLayout', a:method)
