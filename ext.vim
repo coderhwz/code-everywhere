@@ -218,7 +218,7 @@ let snips_author=g:author
 " }
 
 
-if OSX()
+if (OSX())
 " 输入法切换 {
 let g:switchLib = "/Users/osx001/.vim/bin/libInputSourceSwitcher.dylib"
 function! ToggleInputMethod(method)
@@ -291,6 +291,7 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
 "}
 
 "Air Line{
@@ -313,4 +314,20 @@ nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 "}
 
+" markdown {
+au BufRead,BufNewFile *.md setlocal textwidth=80
+let g:vim_markdown_frontmatter=1
+let g:vim_markdown_toml_frontmatter = 1
+" }
 
+
+let g:ycm_key_invoke_completion="<C-F>"
+
+function! GetHTML()
+python << EOF
+import vim, BeautifulSoup, urllib
+handle = urllib.urlopen(vim.current.line)
+soup = BeautifulSoup.BeautifulSoup(handle.read())
+vim.current.buffer[:] = soup.prettify().split('\n')
+EOF
+endfunction

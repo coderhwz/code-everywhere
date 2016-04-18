@@ -8,6 +8,9 @@
     silent function! WINDOWS()
         return  (has('win32') || has('win64'))
     endfunction
+    silent function! GUI()
+        return  has('gui_running')
+    endfunction
 " }:
 set nocompatible                          " 与vi不兼容
 filetype off                              " required!
@@ -18,7 +21,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 Plugin 'godlygeek/tabular.git'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'scrooloose/nerdtree.git'
@@ -64,6 +67,7 @@ Plugin 'easymotion/vim-easymotion'
 " 自动配对
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Konfekt/FastFold'
+Plugin 'Valloric/YouCompleteMe'
 filetype plugin indent on                 " required!
 
 let mapleader=","
