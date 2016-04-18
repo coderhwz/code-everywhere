@@ -315,7 +315,10 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 "}
 
 " markdown {
-au BufRead,BufNewFile *.md setlocal textwidth=80
+set formatoptions+=Mm
+au BufRead,BufNewFile *.md set textwidth=80
+nnoremap Q gq
+
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_toml_frontmatter = 1
 " }
