@@ -323,8 +323,12 @@ let g:vim_markdown_frontmatter=1
 let g:vim_markdown_toml_frontmatter = 1
 " }
 
-
+"ycm{
 let g:ycm_key_invoke_completion="<C-F>"
+let g:ycm_filetype_specific_completion_to_disable = {
+        \ 'php': 1
+        \}
+"}
 
 function! GetHTML()
 python << EOF
